@@ -27,7 +27,8 @@ This example API documentation page was created with [Slate](https://github.com/
 **API Key**: `4e64e11b-f132-4670-bf34-6f609346fb98`  
 
 **Development**: `https://apidev.ottopoint.id/ottostamp`  
-**Staging**: ``  
+**Staging**: ``
+
 # Signature
 
 ### How To Generate Signature
