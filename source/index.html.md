@@ -90,6 +90,7 @@ signature := HashSha512(plainText)
 
 ## Register Merchant
 
+`POST` `/merchant/v1/register`  
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -177,6 +178,8 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/register" \
 
 ## Generate Token
 
+`POST` `/merchant/v1/token`  
+
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -239,6 +242,8 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/token" \
 `99` | General Error | |
 
 ## History Earning / Redemption
+
+`GET` `/transaction/v1/merchant/history/list`  
 
 ### HTTP Headers
 
@@ -363,6 +368,8 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/merchant/history/list
 
 ## Reporting
 
+`GET` `/transaction/v1/merchant/report`  
+
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -424,6 +431,9 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/history/report" \
 
 # Customer
 ## Add Customer
+
+`POST` `/customer/v1/register`  
+
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -501,6 +511,8 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/customer/register" \
 `99` | General Error | |
 
 ## Check Balance
+
+`GET` `/customer/v1/balance`  
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -557,6 +569,9 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/balance?cust
 `99` | General Error | |
 
 ## Earning Stamp / Coupon
+
+`POST` `/transaction/v1/customer/earn`  
+
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -625,6 +640,9 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/earn" \
 `99` | General Error | |
 
 ## Check Eligible Redemption
+
+`GET` `/transaction/v1/customer/redemption/eligible`  
+
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -680,6 +698,9 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption/e
 `13` | Failed | Nomor Telepon Customer Belum di daftarkan oleh merchant |
 `99` | General Error | |
 ## Redemption
+
+`POST` `/transaction/v1/customer/redemption` 
+
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -750,6 +771,9 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption" 
 `13` | Failed | Nomor Telepon Customer Belum di daftarkan oleh merchant |
 `99` | General Error | |
 ## History
+
+`POST` `/transaction/v1/customer/history/list`  
+
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -774,7 +798,7 @@ recordPerPage | true | string | |
 > Example Request:
 
 ```shell
-curl "hhttps://apidev.ottopoint.id/ottostamp/transaction/v1/merchant/history/list" \
+curl "hhttps://apidev.ottopoint.id/ottostamp/transaction/v1/customer/history/list" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -863,6 +887,9 @@ curl "hhttps://apidev.ottopoint.id/ottostamp/transaction/v1/merchant/history/lis
 `99` | General Error | |
 
 # Promo
+
+`POST` `/merchant/v1/promo/add`  
+
 ## Add Promo
 ### HTTP Headers
 
@@ -946,6 +973,10 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/add" \
 `99` | General Error | |
 
 ## Detail Promo
+
+`POST`: `/merchant/v1/promo/detail`  
+
+
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -1012,6 +1043,9 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/detail" \
 `99` | General Error | |
 
 ## Update Promo
+
+`POST`: `/merchant/v1/promo/update`  
+
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -1082,6 +1116,9 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/edit" \
 `99` | General Error | |
 
 ## Delete Promo
+
+`POST`: `/merchant/v1/promo/delete` 
+
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
