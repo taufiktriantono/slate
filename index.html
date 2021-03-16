@@ -570,7 +570,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/merchant/v1/register"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -735,7 +735,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/merchant/v1/token"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -889,7 +889,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/v1/merchant/history/list"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -1090,25 +1090,25 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>recordPerPage</td>
+<td>startDate</td>
 <td>true</td>
 <td>string</td>
 <td></td>
-<td>The number of search results to return per page</td>
+<td>Ex <code>2021-01-01</code>, Format <code>YYYY-MM-DD</code></td>
 </tr>
 <tr>
-<td>currentPage</td>
+<td>endDate</td>
 <td>true</td>
 <td>string</td>
 <td></td>
-<td>Ex 1</td>
+<td>Ex <code>2021-01-30</code>, Format <code>YYYY-MM-DD</code></td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/history/report"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -1272,7 +1272,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/merchant/v1/customer/register"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -1437,7 +1437,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/balance"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -1584,7 +1584,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/earn"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -1740,7 +1740,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption/eligible"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -1896,7 +1896,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -1911,9 +1911,11 @@
 <p>Request body:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"inquiryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fc544da1-c091-4029-8e3c-7e48f69e32a4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transactionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-15 16:01:10"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"customerPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"081345679912"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Taufik"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"customerEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"taufik@mail.com"</span><span class="w">
+    </span><span class="nl">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2a5dd826-1152-42be-af7c-9eb2c40f5c9f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -1922,9 +1924,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response-9'>Response</h3>
 <table><thead>
