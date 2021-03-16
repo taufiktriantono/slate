@@ -27,7 +27,9 @@ This example API documentation page was created with [Slate](https://github.com/
 **API Key**: `4e64e11b-f132-4670-bf34-6f609346fb98`  
 
 **Development**: `https://apidev.ottopoint.id/ottostamp`  
-**Staging**: ``
+**Staging**:
+
+*Ketika Token Berakhir, Perlu Generate Ulang [Generate Ulang](#generate-token)
 
 # Signature
 
@@ -363,7 +365,7 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/merchant/history/list
 `03` | Failed | Nomor Telepon Merchant Belum Terdaftar |
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `99` | General Error | |
 
 ## Reporting
@@ -426,7 +428,7 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/history/report" \
 `03` | Failed | Nomor Telepon Merchant Belum Terdaftar |
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `99` | General Error | |
 
 # Customer
@@ -507,7 +509,7 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/customer/register" \
 `03` | Failed | Nomor Telepon Customer Belum Terdaftar |
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `99` | General Error | |
 
 ## Check Balance
@@ -562,7 +564,7 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/balance?cust
 **Response Code** | **Meaning** | **Description** | **Definition**
 --------- | -------- | --------- | -----------
 `00` | Success | |
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
 `13` | Failed | Nomor Telepon Customer Belum di daftarkan oleh merchant |
@@ -633,7 +635,7 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/earn" \
 **Response Code** | **Meaning** | **Description** | **Definition**
 --------- | -------- | --------- | -----------
 `00` | Success | |
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
 `13` | Failed | Nomor Telepon Customer Belum di daftarkan oleh merchant |
@@ -692,7 +694,7 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption/e
 **Response Code** | **Meaning** | **Description** | **Definition**
 --------- | -------- | --------- | -----------
 `00` | Success | |
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
 `13` | Failed | Nomor Telepon Customer Belum di daftarkan oleh merchant |
@@ -765,7 +767,7 @@ curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption" 
 **Response Code** | **Meaning** | **Description** | **Definition**
 --------- | -------- | --------- | -----------
 `00` | Success | |
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
 `13` | Failed | Nomor Telepon Customer Belum di daftarkan oleh merchant |
@@ -880,17 +882,17 @@ curl "hhttps://apidev.ottopoint.id/ottostamp/transaction/v1/customer/history/lis
 **Response Code** | **Meaning** | **Description** | **Definition**
 --------- | -------- | --------- | -----------
 `00` | Success | |
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
 `13` | Failed | Nomor Telepon Customer Belum di daftarkan oleh merchant |
 `99` | General Error | |
 
 # Promo
-
-`POST` `/merchant/v1/promo/add`  
-
 ## Add Promo
+
+`POST`: `/merchant/v1/promo/detail`  
+
 ### HTTP Headers
 
 **Property** | **Required** | **Type** | **Description**
@@ -968,14 +970,13 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/add" \
 `03` | Failed | Nomor Telepon Customer Belum Terdaftar |
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `22` | Bad Request | Invalid promo start date or end date
 `99` | General Error | |
 
 ## Detail Promo
 
 `POST`: `/merchant/v1/promo/detail`  
-
 
 ### HTTP Headers
 
@@ -1038,7 +1039,7 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/detail" \
 `03` | Failed | Nomor Telepon Customer Belum Terdaftar |
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `22` | Bad Request | Invalid promo start date or end date
 `99` | General Error | |
 
@@ -1111,7 +1112,7 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/edit" \
 `03` | Failed | Nomor Telepon Customer Belum Terdaftar |
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `22` | Bad Request | Invalid promo start date or end date
 `99` | General Error | |
 
@@ -1137,7 +1138,6 @@ Authorizatoin | true | string | ex. `MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=`
 **Property** | **Required** | **Type** | **Size** | **Description**
 --------- | -------- | --------- | ----------- | -----------
 id | true | string | | id promo yang di dapat response `Detail Promo`
-
 
 > Example Request:
 
@@ -1174,6 +1174,7 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/delete" \
   "data": null
 }
 ```
+
 ### Response
 **Response Code** | **Meaning** | **Description** | **Definition**
 --------- | -------- | --------- | -----------
@@ -1181,6 +1182,6 @@ curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/delete" \
 `03` | Failed | Nomor Telepon Customer Belum Terdaftar |
 `06` | Bad Request | Signature tidak tepat |
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
-`12` | Failed | Token or Session Expired | 
+`12` | Failed | Token or Session Expired | Perlu Generate Ulang [Generate Token](#generate-token)
 `22` | Bad Request | Invalid promo start date or end date
 `99` | General Error | |
