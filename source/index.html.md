@@ -116,7 +116,7 @@ businessType | false | integer |
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/register" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -198,7 +198,7 @@ merchantPhone | true | string | 20 | nomor telepon merchant, ex format `08129946
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/token" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -262,7 +262,7 @@ currentPage | true | string | | Ex 1
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/merchant/history/list" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -379,13 +379,13 @@ Authorization | true | string | ex. `MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=`
 
 **Property** | **Required** | **Type** | **Size** | **Description**
 --------- | -------- | --------- | ----------- | ----------- |
-recordPerPage | true | string | | The number of search results to return per page
-currentPage | true | string | | Ex 1
+startDate | true | string | | Ex `2021-01-01`, Format `YYYY-MM-DD`
+endDate | true | string | | Ex `2021-01-30`, Format `YYYY-MM-DD`
 
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/transaction/history/report" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -447,7 +447,7 @@ cutomerEmail | true | string | 40 | email customer
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/customer/register" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -522,7 +522,7 @@ customerPhone | true | string | 20 | nomor telepon merchant, ex format `08129946
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/balance?customerPhone=081299465055" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -574,11 +574,14 @@ Authorizatoin | true | string | ex. `MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=`
 **Property** | **Required** | **Type** | **Size** | **Description**
 --------- | -------- | --------- | ----------- | -----------
 customerPhone | true | string | 20 | nomor telepon customer, ex format `081299465055`
+transactionTime | true | string | | format `YYYY-MM-DD HH:mm:ss`
+referenceId | true | string | 40 | nomor referensi redemption
+amount | true | string | 20 | Ex `20000`
 
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/earn" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -594,9 +597,10 @@ curl "http://example.com/api/kittens" \
 
 ```json
 {
+    "transactionTime": "2021-03-15 15:27:00",
     "customerPhone": "081345679912",
-    "customerName": "Taufik",
-    "customerEmail": "taufik@mail.com"
+    "referenceId": "0356f2b2-261b-4d98-9191-1c63bd9da9dd",
+    "amount": "100000"
 }
 ```
 
@@ -606,9 +610,7 @@ curl "http://example.com/api/kittens" \
 {
     "responseCode": "00",
     "responseDesc": "Success",
-    "data": {
-        "balance": "0"
-    }
+    "data": null
 }
 ```
 ### Response
@@ -635,7 +637,7 @@ Timestamp | true | string | ex. `1579666534`
 Signature | false | string | ex. `60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91`
 Authorizatoin | true | string | ex. `MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=`
 
-### Body Parameter
+### Query Parameter
 
 **Property** | **Required** | **Type** | **Size** | **Description**
 --------- | -------- | --------- | ----------- | -----------
@@ -644,7 +646,7 @@ customerPhone | true | string | 20 | nomor telepon merchant, ex format `08129946
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption/eligible?customerPhone=081299465055" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -654,16 +656,6 @@ curl "http://example.com/api/kittens" \
   -H "Timestamp: 1579666534" \
   -H "Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91" \
   -H "Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="
-```
-
-> Request body:
-
-```json
-{
-    "customerPhone": "081345679912",
-    "customerName": "Taufik",
-    "customerEmail": "taufik@mail.com"
-}
 ```
 
 > Example response:
@@ -686,73 +678,6 @@ curl "http://example.com/api/kittens" \
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
 `13` | Failed | Nomor Telepon Customer Belum di daftarkan oleh merchant |
 `99` | General Error | |
-
-## Earning Stamp / Coupon
-### HTTP Headers
-
-**Property** | **Required** | **Type** | **Description**
---------- | -------- | --------- | -----------
-InstitutionId | true | string | institutionId / insitution code yang di berikan
-AppsId | true | string | ex. `appsId`
-DeviceId | true | string | ex. `869552045462447`
-ChannelId | true | string | ex. `H2H`
-Geolocation | true | string | ex. `-6.231340755705505, 106.84526008386358`
-Timestamp | true | string | ex. `1579666534`
-Signature | true | string | ex. `60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91`
-Authorizatoin | true | string | ex. `MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=`
-
-### Body Parameter
-
-**Property** | **Required** | **Type** | **Size** | **Description**
---------- | -------- | --------- | ----------- | -----------
-customerPhone | true | string | 20 | nomor telepon customer, ex format `081299465055`
-
-> Example Request:
-
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Content-Type: application/json" \
-  -H "InstitutionId: OS001" \
-  -H "AppsId: appsId" \
-  -H "DeviceId: 869552045462447" \
-  -H "ChannelId: H2H" \
-  -H "Geolocation: -6.231340755705505, 106.84526008386358" \
-  -H "Timestamp: 1579666534" \
-  -H "Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91" \
-  -H "Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="
-```
-
-> Request body:
-
-```json
-{
-    "customerPhone": "081345679912",
-    "customerName": "Taufik",
-    "customerEmail": "taufik@mail.com"
-}
-```
-
-> Example response:
-
-```json
-{
-    "responseCode": "00",
-    "responseDesc": "Success",
-    "data": {
-        "balance": "0"
-    }
-}
-```
-### Response
-**Response Code** | **Meaning** | **Description** | **Definition**
---------- | -------- | --------- | -----------
-`00` | Success | |
-`12` | Failed | Token or Session Expired | 
-`06` | Bad Request | Signature tidak tepat |
-`08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
-`13` | Failed | Nomor Telepon Customer Belum di daftarkan oleh merchant |
-`99` | General Error | |
-
 ## Redemption
 ### HTTP Headers
 
@@ -779,7 +704,7 @@ referenceId | true | string | 40 | nomor referensi redemption
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -823,7 +748,6 @@ curl "http://example.com/api/kittens" \
 `08` | Bad Request | Terdapat kesalahan pada data yang di kirim | 
 `13` | Failed | Nomor Telepon Customer Belum di daftarkan oleh merchant |
 `99` | General Error | |
-
 ## History
 ### HTTP Headers
 
@@ -842,14 +766,14 @@ Authorizatoin | true | string | ex. `MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=`
 
 **Property** | **Required** | **Type** | **Size** | **Description**
 --------- | -------- | --------- | ----------- | -----------
-customerPhone | true | string | |
-currentPage | true | string | | 
+customerPhone | true | string | 20 | Ex `081299465055`
+currentPage | true | string | |
 recordPerPage | true | string | |
 
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "hhttps://apidev.ottopoint.id/ottostamp/transaction/v1/merchant/history/list" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -958,20 +882,20 @@ Authorizatoin | true | string | ex. `MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=`
 --------- | -------- | --------- | ----------- | -----------
 name | true | string | 100 | nama promo
 minTrx | true | int | |
-earnStartDate | true | string | tanggal earning, format `YYYY-MM-DD`
-earnEndDate | true | string | tanggal earning, format `YYYY-MM-DD`
-earnStamp | true | numeric | stamp yang akan di dapatkan customer jika transaksi >= minTrx
-promoStartDate | true | string | tanggal earning, format `YYYY-MM-DD`
-promoEndDate | true | string | tanggal earning, format `YYYY-MM-DD`
-promoType | true | string | jenis promo, Ex `NT` (untuk saat ini, hanya ada jenis promo `nominal transaksi`)
-promoNominal | true | numeric | potongan harga yang di dapatkan customer ketika ingin melakukan redemption stamp mereka, ex.`4`
-redeemStamp | true | numeric | stamp yang di butuhkan untuk mendapatkan `promoNominal`
+earnStartDate | true | string | | tanggal mulai earning, format `YYYY-MM-DD`
+earnEndDate | true | string | | tanggal berakhir earning, format `YYYY-MM-DD`
+earnStamp | true | numeric | | stamp yang akan di dapatkan customer jika transaksi >= minTrx
+promoStartDate | true | string | | tanggal mulai promo, format `YYYY-MM-DD`
+promoEndDate | true | string | | tanggal berakhir promo, format `YYYY-MM-DD`
+promoType | true | string | | jenis promo, Ex `NT` (untuk saat ini, hanya ada jenis promo `nominal transaksi`)
+promoNominal | true | numeric | | potongan harga yang di dapatkan customer ketika ingin melakukan redemption stamp mereka, ex.`4`
+redeemStamp | true | numeric | | stamp yang di butuhkan untuk mendapatkan `promoNominal`
 
 
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/add" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -1037,7 +961,7 @@ Authorizatoin | true | string | ex. `MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=`
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/detail" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -1113,7 +1037,7 @@ promoEndDate | true | string | tanggal earning, format `YYYY-MM-DD`
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/edit" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
@@ -1180,7 +1104,7 @@ id | true | string | | id promo yang di dapat response `Detail Promo`
 > Example Request:
 
 ```shell
-curl "http://example.com/api/kittens" \
+curl "https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/delete" \
   -H "Content-Type: application/json" \
   -H "InstitutionId: OS001" \
   -H "AppsId: appsId" \
