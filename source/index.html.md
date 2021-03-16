@@ -23,7 +23,7 @@ Welcome to the OttoStamp API! You can use our API to access OttoStamp API endpoi
 
 This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
-**Institution ID**: `OS0001`  
+**Institution ID**: `OS0001`   
 **API Key**: `4e64e11b-f132-4670-bf34-6f609346fb98`  
 
 **Development**: `https://apidev.ottopoint.id/ottostamp`  
