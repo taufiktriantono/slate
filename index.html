@@ -353,9 +353,6 @@
                     <a href="#check-eligible-redemption" class="toc-h2 toc-link" data-title="Check Eligible Redemption">Check Eligible Redemption</a>
                   </li>
                   <li>
-                    <a href="#earning-stamp-coupon-2" class="toc-h2 toc-link" data-title="Earning Stamp / Coupon">Earning Stamp / Coupon</a>
-                  </li>
-                  <li>
                     <a href="#redemption" class="toc-h2 toc-link" data-title="Redemption">Redemption</a>
                   </li>
                   <li>
@@ -397,7 +394,11 @@
 
 <p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
 
-<p>Test</p>
+<p><strong>Institution ID</strong>: <code>OS0001</code><br>
+<strong>API Key</strong>: <code>4e64e11b-f132-4670-bf34-6f609346fb98</code>  </p>
+
+<p><strong>Development</strong>: <code>https://apidev.ottopoint.id/ottostamp</code><br>
+<strong>Staging</strong>: ``</p>
 <h1 id='signature'>Signature</h1><h3 id='how-to-generate-signature'>How To Generate Signature</h3>
 <blockquote>
 <p>Example Generate Signature:</p>
@@ -432,11 +433,7 @@
   <span class="n">MerchantPhone</span><span class="o">:</span> <span class="s">"0813469989"</span>
 <span class="p">}</span>
 
-<span class="n">bytes</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">json</span><span class="o">.</span><span class="n">Marshal</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">req</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{})</span>
-<span class="n">json</span><span class="o">.</span><span class="n">Unmarshal</span><span class="p">(</span><span class="n">bytes</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">req</span><span class="p">)</span>
-
-<span class="n">marshal</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">json</span><span class="o">.</span><span class="n">Marshal</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="n">marshal</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">json</span><span class="o">.</span><span class="n">Marshal</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">stringify</span> <span class="o">:=</span> <span class="kt">string</span><span class="p">(</span><span class="n">marshal</span><span class="p">)</span>
 
 <span class="n">jsonReqString</span> <span class="o">:=</span> <span class="n">SignReplaceAll</span><span class="p">(</span><span class="n">stringify</span><span class="p">)</span>
@@ -455,7 +452,9 @@
 <span class="n">signature</span> <span class="o">:=</span> <span class="n">HashSha512</span><span class="p">(</span><span class="n">plainText</span><span class="p">)</span>
 
 <span class="c">// ex Signature 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</span>
-</code></pre></div><h1 id='merchant'>Merchant</h1><h2 id='register-merchant'>Register Merchant</h2><h3 id='http-headers'>HTTP Headers</h3>
+</code></pre></div><h1 id='merchant'>Merchant</h1><h2 id='register-merchant'>Register Merchant</h2>
+<p><code>POST</code> <code>/merchant/v1/register</code>  </p>
+<h3 id='http-headers'>HTTP Headers</h3>
 <table><thead>
 <tr>
 <th><strong>Property</strong></th>
@@ -655,7 +654,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='generate-token'>Generate Token</h2><h3 id='http-headers-2'>HTTP Headers</h3>
+<h2 id='generate-token'>Generate Token</h2>
+<p><code>POST</code> <code>/merchant/v1/token</code>  </p>
+<h3 id='http-headers-2'>HTTP Headers</h3>
 <table><thead>
 <tr>
 <th><strong>Property</strong></th>
@@ -802,7 +803,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='history-earning-redemption'>History Earning / Redemption</h2><h3 id='http-headers-3'>HTTP Headers</h3>
+<h2 id='history-earning-redemption'>History Earning / Redemption</h2>
+<p><code>GET</code> <code>/transaction/v1/merchant/history/list</code>  </p>
+<h3 id='http-headers-3'>HTTP Headers</h3>
 <table><thead>
 <tr>
 <th><strong>Property</strong></th>
@@ -1021,7 +1024,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reporting'>Reporting</h2><h3 id='http-headers-4'>HTTP Headers</h3>
+<h2 id='reporting'>Reporting</h2>
+<p><code>GET</code> <code>/transaction/v1/merchant/report</code>  </p>
+<h3 id='http-headers-4'>HTTP Headers</h3>
 <table><thead>
 <tr>
 <th><strong>Property</strong></th>
@@ -1178,7 +1183,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h1 id='customer'>Customer</h1><h2 id='add-customer'>Add Customer</h2><h3 id='http-headers-5'>HTTP Headers</h3>
+<h1 id='customer'>Customer</h1><h2 id='add-customer'>Add Customer</h2>
+<p><code>POST</code> <code>/customer/v1/register</code>  </p>
+<h3 id='http-headers-5'>HTTP Headers</h3>
 <table><thead>
 <tr>
 <th><strong>Property</strong></th>
@@ -1357,7 +1364,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='check-balance'>Check Balance</h2><h3 id='http-headers-6'>HTTP Headers</h3>
+<h2 id='check-balance'>Check Balance</h2>
+<p><code>GET</code> <code>/customer/v1/balance</code>  </p>
+<h3 id='http-headers-6'>HTTP Headers</h3>
 <table><thead>
 <tr>
 <th><strong>Property</strong></th>
@@ -1437,7 +1446,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/balance"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/balance?customerPhone=081299465055"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -1504,7 +1513,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='earning-stamp-coupon'>Earning Stamp / Coupon</h2><h3 id='http-headers-7'>HTTP Headers</h3>
+<h2 id='earning-stamp-coupon'>Earning Stamp / Coupon</h2>
+<p><code>POST</code> <code>/transaction/v1/customer/earn</code>  </p>
+<h3 id='http-headers-7'>HTTP Headers</h3>
 <table><thead>
 <tr>
 <th><strong>Property</strong></th>
@@ -1579,6 +1590,27 @@
 <td>20</td>
 <td>nomor telepon customer, ex format <code>081299465055</code></td>
 </tr>
+<tr>
+<td>transactionTime</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+<td>format <code>YYYY-MM-DD HH:mm:ss</code></td>
+</tr>
+<tr>
+<td>referenceId</td>
+<td>true</td>
+<td>string</td>
+<td>40</td>
+<td>nomor referensi redemption</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>true</td>
+<td>string</td>
+<td>20</td>
+<td>Ex <code>20000</code></td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -1599,9 +1631,10 @@
 <p>Request body:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"transactionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-15 15:27:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"customerPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"081345679912"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Taufik"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"customerEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"taufik@mail.com"</span><span class="w">
+    </span><span class="nl">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0356f2b2-261b-4d98-9191-1c63bd9da9dd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -1610,9 +1643,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response-7'>Response</h3>
 <table><thead>
@@ -1660,497 +1691,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='check-eligible-redemption'>Check Eligible Redemption</h2><h3 id='http-headers-8'>HTTP Headers</h3>
-<table><thead>
-<tr>
-<th><strong>Property</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>InstitutionId</td>
-<td>true</td>
-<td>string</td>
-<td>institutionId / insitution code yang di berikan</td>
-</tr>
-<tr>
-<td>AppsId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>appsId</code></td>
-</tr>
-<tr>
-<td>DeviceId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>869552045462447</code></td>
-</tr>
-<tr>
-<td>ChannelId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>H2H</code></td>
-</tr>
-<tr>
-<td>Geolocation</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>-6.231340755705505, 106.84526008386358</code></td>
-</tr>
-<tr>
-<td>Timestamp</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>1579666534</code></td>
-</tr>
-<tr>
-<td>Signature</td>
-<td>false</td>
-<td>string</td>
-<td>ex. <code>60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</code></td>
-</tr>
-<tr>
-<td>Authorizatoin</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=</code></td>
-</tr>
-</tbody></table>
-<h3 id='body-parameter-5'>Body Parameter</h3>
-<table><thead>
-<tr>
-<th><strong>Property</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Size</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>customerPhone</td>
-<td>true</td>
-<td>string</td>
-<td>20</td>
-<td>nomor telepon merchant, ex format <code>081299465055</code></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption/eligible"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"DeviceId: 869552045462447"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"ChannelId: H2H"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Geolocation: -6.231340755705505, 106.84526008386358"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Timestamp: 1579666534"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="</span>
-</code></pre></div>
-<blockquote>
-<p>Request body:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"customerPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"081345679912"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"customerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Taufik"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"customerEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"taufik@mail.com"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-8'>Response</h3>
-<table><thead>
-<tr>
-<th><strong>Response Code</strong></th>
-<th><strong>Meaning</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Definition</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>00</code></td>
-<td>Success</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>12</code></td>
-<td>Failed</td>
-<td>Token or Session Expired</td>
-<td></td>
-</tr>
-<tr>
-<td><code>06</code></td>
-<td>Bad Request</td>
-<td>Signature tidak tepat</td>
-<td></td>
-</tr>
-<tr>
-<td><code>08</code></td>
-<td>Bad Request</td>
-<td>Terdapat kesalahan pada data yang di kirim</td>
-<td></td>
-</tr>
-<tr>
-<td><code>13</code></td>
-<td>Failed</td>
-<td>Nomor Telepon Customer Belum di daftarkan oleh merchant</td>
-<td></td>
-</tr>
-<tr>
-<td><code>99</code></td>
-<td>General Error</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='earning-stamp-coupon-2'>Earning Stamp / Coupon</h2><h3 id='http-headers-9'>HTTP Headers</h3>
-<table><thead>
-<tr>
-<th><strong>Property</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>InstitutionId</td>
-<td>true</td>
-<td>string</td>
-<td>institutionId / insitution code yang di berikan</td>
-</tr>
-<tr>
-<td>AppsId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>appsId</code></td>
-</tr>
-<tr>
-<td>DeviceId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>869552045462447</code></td>
-</tr>
-<tr>
-<td>ChannelId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>H2H</code></td>
-</tr>
-<tr>
-<td>Geolocation</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>-6.231340755705505, 106.84526008386358</code></td>
-</tr>
-<tr>
-<td>Timestamp</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>1579666534</code></td>
-</tr>
-<tr>
-<td>Signature</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</code></td>
-</tr>
-<tr>
-<td>Authorizatoin</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=</code></td>
-</tr>
-</tbody></table>
-<h3 id='body-parameter-6'>Body Parameter</h3>
-<table><thead>
-<tr>
-<th><strong>Property</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Size</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>customerPhone</td>
-<td>true</td>
-<td>string</td>
-<td>20</td>
-<td>nomor telepon customer, ex format <code>081299465055</code></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"DeviceId: 869552045462447"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"ChannelId: H2H"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Geolocation: -6.231340755705505, 106.84526008386358"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Timestamp: 1579666534"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="</span>
-</code></pre></div>
-<blockquote>
-<p>Request body:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"inquiryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fc544da1-c091-4029-8e3c-7e48f69e32a4"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"transactionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-15 16:01:10"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"customerPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"081345679912"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2a5dd826-1152-42be-af7c-9eb2c40f5c9f"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30000"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-9'>Response</h3>
-<table><thead>
-<tr>
-<th><strong>Response Code</strong></th>
-<th><strong>Meaning</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Definition</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>00</code></td>
-<td>Success</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>12</code></td>
-<td>Failed</td>
-<td>Token or Session Expired</td>
-<td></td>
-</tr>
-<tr>
-<td><code>06</code></td>
-<td>Bad Request</td>
-<td>Signature tidak tepat</td>
-<td></td>
-</tr>
-<tr>
-<td><code>08</code></td>
-<td>Bad Request</td>
-<td>Terdapat kesalahan pada data yang di kirim</td>
-<td></td>
-</tr>
-<tr>
-<td><code>13</code></td>
-<td>Failed</td>
-<td>Nomor Telepon Customer Belum di daftarkan oleh merchant</td>
-<td></td>
-</tr>
-<tr>
-<td><code>99</code></td>
-<td>General Error</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='redemption'>Redemption</h2><h3 id='http-headers-10'>HTTP Headers</h3>
-<table><thead>
-<tr>
-<th><strong>Property</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>InstitutionId</td>
-<td>true</td>
-<td>string</td>
-<td>institutionId / insitution code yang di berikan</td>
-</tr>
-<tr>
-<td>AppsId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>appsId</code></td>
-</tr>
-<tr>
-<td>DeviceId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>869552045462447</code></td>
-</tr>
-<tr>
-<td>ChannelId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>H2H</code></td>
-</tr>
-<tr>
-<td>Geolocation</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>-6.231340755705505, 106.84526008386358</code></td>
-</tr>
-<tr>
-<td>Timestamp</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>1579666534</code></td>
-</tr>
-<tr>
-<td>Signature</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</code></td>
-</tr>
-<tr>
-<td>Authorizatoin</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=</code></td>
-</tr>
-</tbody></table>
-<h3 id='body-parameter-7'>Body Parameter</h3>
-<table><thead>
-<tr>
-<th><strong>Property</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Size</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>inquiryId</td>
-<td>true</td>
-<td>string</td>
-<td>40</td>
-<td>di dapat pada response <code>Check Eligible</code></td>
-</tr>
-<tr>
-<td>transactionTime</td>
-<td>true</td>
-<td>string</td>
-<td></td>
-<td>format <code>YYYY-MM-DD HH:mm:ss</code></td>
-</tr>
-<tr>
-<td>customerPhone</td>
-<td>true</td>
-<td>string</td>
-<td>20</td>
-<td>nomor telepon merchant, ex format <code>081299465055</code></td>
-</tr>
-<tr>
-<td>referenceId</td>
-<td>true</td>
-<td>string</td>
-<td>40</td>
-<td>nomor referensi redemption</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"DeviceId: 869552045462447"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"ChannelId: H2H"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Geolocation: -6.231340755705505, 106.84526008386358"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Timestamp: 1579666534"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="</span>
-</code></pre></div>
-<blockquote>
-<p>Request body:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"inquiryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d57b725f-1963-44b5-8c75-b880c0338ffb"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"transactionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-10 15:24:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"customerPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"081345679912"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca0f73b6-4ff9-462a-855b-facc1fa349e0"</span><span class="p">,</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-10'>Response</h3>
-<table><thead>
-<tr>
-<th><strong>Response Code</strong></th>
-<th><strong>Meaning</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Definition</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>00</code></td>
-<td>Success</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>12</code></td>
-<td>Failed</td>
-<td>Token or Session Expired</td>
-<td></td>
-</tr>
-<tr>
-<td><code>06</code></td>
-<td>Bad Request</td>
-<td>Signature tidak tepat</td>
-<td></td>
-</tr>
-<tr>
-<td><code>08</code></td>
-<td>Bad Request</td>
-<td>Terdapat kesalahan pada data yang di kirim</td>
-<td></td>
-</tr>
-<tr>
-<td><code>13</code></td>
-<td>Failed</td>
-<td>Nomor Telepon Customer Belum di daftarkan oleh merchant</td>
-<td></td>
-</tr>
-<tr>
-<td><code>99</code></td>
-<td>General Error</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='history'>History</h2><h3 id='http-headers-11'>HTTP Headers</h3>
+<h2 id='check-eligible-redemption'>Check Eligible Redemption</h2>
+<p><code>GET</code> <code>/transaction/v1/customer/redemption/eligible</code>  </p>
+<h3 id='http-headers-8'>HTTP Headers</h3>
 <table><thead>
 <tr>
 <th><strong>Property</strong></th>
@@ -2222,8 +1765,337 @@
 <td>customerPhone</td>
 <td>true</td>
 <td>string</td>
+<td>20</td>
+<td>nomor telepon merchant, ex format <code>081299465055</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption/eligible?customerPhone=081299465055"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"DeviceId: 869552045462447"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ChannelId: H2H"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Geolocation: -6.231340755705505, 106.84526008386358"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Timestamp: 1579666534"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="</span>
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-8'>Response</h3>
+<table><thead>
+<tr>
+<th><strong>Response Code</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>00</code></td>
+<td>Success</td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td><code>12</code></td>
+<td>Failed</td>
+<td>Token or Session Expired</td>
+<td></td>
+</tr>
+<tr>
+<td><code>06</code></td>
+<td>Bad Request</td>
+<td>Signature tidak tepat</td>
+<td></td>
+</tr>
+<tr>
+<td><code>08</code></td>
+<td>Bad Request</td>
+<td>Terdapat kesalahan pada data yang di kirim</td>
+<td></td>
+</tr>
+<tr>
+<td><code>13</code></td>
+<td>Failed</td>
+<td>Nomor Telepon Customer Belum di daftarkan oleh merchant</td>
+<td></td>
+</tr>
+<tr>
+<td><code>99</code></td>
+<td>General Error</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='redemption'>Redemption</h2>
+<p><code>POST</code> <code>/transaction/v1/customer/redemption</code> </p>
+<h3 id='http-headers-9'>HTTP Headers</h3>
+<table><thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InstitutionId</td>
+<td>true</td>
+<td>string</td>
+<td>institutionId / insitution code yang di berikan</td>
+</tr>
+<tr>
+<td>AppsId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>appsId</code></td>
+</tr>
+<tr>
+<td>DeviceId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>869552045462447</code></td>
+</tr>
+<tr>
+<td>ChannelId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>H2H</code></td>
+</tr>
+<tr>
+<td>Geolocation</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>-6.231340755705505, 106.84526008386358</code></td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>1579666534</code></td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</code></td>
+</tr>
+<tr>
+<td>Authorizatoin</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=</code></td>
+</tr>
+</tbody></table>
+<h3 id='body-parameter-5'>Body Parameter</h3>
+<table><thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Size</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>inquiryId</td>
+<td>true</td>
+<td>string</td>
+<td>40</td>
+<td>di dapat pada response <code>Check Eligible</code></td>
+</tr>
+<tr>
+<td>transactionTime</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+<td>format <code>YYYY-MM-DD HH:mm:ss</code></td>
+</tr>
+<tr>
+<td>customerPhone</td>
+<td>true</td>
+<td>string</td>
+<td>20</td>
+<td>nomor telepon merchant, ex format <code>081299465055</code></td>
+</tr>
+<tr>
+<td>referenceId</td>
+<td>true</td>
+<td>string</td>
+<td>40</td>
+<td>nomor referensi redemption</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/transaction/v1/customer/redemption"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"DeviceId: 869552045462447"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ChannelId: H2H"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Geolocation: -6.231340755705505, 106.84526008386358"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Timestamp: 1579666534"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="</span>
+</code></pre></div>
+<blockquote>
+<p>Request body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"inquiryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d57b725f-1963-44b5-8c75-b880c0338ffb"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transactionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-10 15:24:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"customerPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"081345679912"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca0f73b6-4ff9-462a-855b-facc1fa349e0"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-9'>Response</h3>
+<table><thead>
+<tr>
+<th><strong>Response Code</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>00</code></td>
+<td>Success</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>12</code></td>
+<td>Failed</td>
+<td>Token or Session Expired</td>
+<td></td>
+</tr>
+<tr>
+<td><code>06</code></td>
+<td>Bad Request</td>
+<td>Signature tidak tepat</td>
+<td></td>
+</tr>
+<tr>
+<td><code>08</code></td>
+<td>Bad Request</td>
+<td>Terdapat kesalahan pada data yang di kirim</td>
+<td></td>
+</tr>
+<tr>
+<td><code>13</code></td>
+<td>Failed</td>
+<td>Nomor Telepon Customer Belum di daftarkan oleh merchant</td>
+<td></td>
+</tr>
+<tr>
+<td><code>99</code></td>
+<td>General Error</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='history'>History</h2>
+<p><code>POST</code> <code>/transaction/v1/customer/history/list</code>  </p>
+<h3 id='http-headers-10'>HTTP Headers</h3>
+<table><thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InstitutionId</td>
+<td>true</td>
+<td>string</td>
+<td>institutionId / insitution code yang di berikan</td>
+</tr>
+<tr>
+<td>AppsId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>appsId</code></td>
+</tr>
+<tr>
+<td>DeviceId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>869552045462447</code></td>
+</tr>
+<tr>
+<td>ChannelId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>H2H</code></td>
+</tr>
+<tr>
+<td>Geolocation</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>-6.231340755705505, 106.84526008386358</code></td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>1579666534</code></td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>false</td>
+<td>string</td>
+<td>ex. <code>60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</code></td>
+</tr>
+<tr>
+<td>Authorizatoin</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=</code></td>
+</tr>
+</tbody></table>
+<h3 id='query-parameter-5'>Query Parameter</h3>
+<table><thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Size</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>customerPhone</td>
+<td>true</td>
+<td>string</td>
+<td>20</td>
+<td>Ex <code>081299465055</code></td>
 </tr>
 <tr>
 <td>currentPage</td>
@@ -2244,7 +2116,7 @@
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"hhttps://apidev.ottopoint.id/ottostamp/transaction/v1/customer/history/list"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -2319,7 +2191,7 @@
         </span><span class="nl">"totalPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-11'>Response</h3>
+</span></code></pre></div><h3 id='response-10'>Response</h3>
 <table><thead>
 <tr>
 <th><strong>Response Code</strong></th>
@@ -2365,7 +2237,577 @@
 <td></td>
 </tr>
 </tbody></table>
-<h1 id='promo'>Promo</h1><h2 id='add-promo'>Add Promo</h2><h3 id='http-headers-12'>HTTP Headers</h3>
+<h1 id='promo'>Promo</h1>
+<p><code>POST</code> <code>/merchant/v1/promo/add</code>  </p>
+<h2 id='add-promo'>Add Promo</h2><h3 id='http-headers-11'>HTTP Headers</h3>
+<table><thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InstitutionId</td>
+<td>true</td>
+<td>string</td>
+<td>institutionId / insitution code yang di berikan</td>
+</tr>
+<tr>
+<td>AppsId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>appsId</code></td>
+</tr>
+<tr>
+<td>DeviceId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>869552045462447</code></td>
+</tr>
+<tr>
+<td>ChannelId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>H2H</code></td>
+</tr>
+<tr>
+<td>Geolocation</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>-6.231340755705505, 106.84526008386358</code></td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>1579666534</code></td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</code></td>
+</tr>
+<tr>
+<td>Authorizatoin</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=</code></td>
+</tr>
+</tbody></table>
+<h3 id='body-parameter-6'>Body Parameter</h3>
+<table><thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Size</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>true</td>
+<td>string</td>
+<td>100</td>
+<td>nama promo</td>
+</tr>
+<tr>
+<td>minTrx</td>
+<td>true</td>
+<td>int</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>earnStartDate</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+<td>tanggal mulai earning, format <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td>earnEndDate</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+<td>tanggal berakhir earning, format <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td>earnStamp</td>
+<td>true</td>
+<td>numeric</td>
+<td></td>
+<td>stamp yang akan di dapatkan customer jika transaksi &gt;= minTrx</td>
+</tr>
+<tr>
+<td>promoStartDate</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+<td>tanggal mulai promo, format <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td>promoEndDate</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+<td>tanggal berakhir promo, format <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td>promoType</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+<td>jenis promo, Ex <code>NT</code> (untuk saat ini, hanya ada jenis promo <code>nominal transaksi</code>)</td>
+</tr>
+<tr>
+<td>promoNominal</td>
+<td>true</td>
+<td>numeric</td>
+<td></td>
+<td>potongan harga yang di dapatkan customer ketika ingin melakukan redemption stamp mereka, ex.<code>4</code></td>
+</tr>
+<tr>
+<td>redeemStamp</td>
+<td>true</td>
+<td>numeric</td>
+<td></td>
+<td>stamp yang di butuhkan untuk mendapatkan <code>promoNominal</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/add"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"DeviceId: 869552045462447"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ChannelId: H2H"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Geolocation: -6.231340755705505, 106.84526008386358"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Timestamp: 1579666534"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="</span>
+</code></pre></div>
+<blockquote>
+<p>Request body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Promo Hari Ini"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minTrx"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"earnStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"earnEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"earnStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"promoStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"promoEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"promoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"redeemStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"promoNominal"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-11'>Response</h3>
+<table><thead>
+<tr>
+<th><strong>Response Code</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>00</code></td>
+<td>Success</td>
+<td>Customer berhasil di tambahkan pada merchant / Nomor Customer sudah terdaftar pada sistem dan di link pada merchant</td>
+<td></td>
+</tr>
+<tr>
+<td><code>03</code></td>
+<td>Failed</td>
+<td>Nomor Telepon Customer Belum Terdaftar</td>
+<td></td>
+</tr>
+<tr>
+<td><code>06</code></td>
+<td>Bad Request</td>
+<td>Signature tidak tepat</td>
+<td></td>
+</tr>
+<tr>
+<td><code>08</code></td>
+<td>Bad Request</td>
+<td>Terdapat kesalahan pada data yang di kirim</td>
+<td></td>
+</tr>
+<tr>
+<td><code>12</code></td>
+<td>Failed</td>
+<td>Token or Session Expired</td>
+<td></td>
+</tr>
+<tr>
+<td><code>22</code></td>
+<td>Bad Request</td>
+<td>Invalid promo start date or end date</td>
+<td></td>
+</tr>
+<tr>
+<td><code>99</code></td>
+<td>General Error</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='detail-promo'>Detail Promo</h2>
+<p><code>POST</code>: <code>/merchant/v1/promo/detail</code>  </p>
+<h3 id='http-headers-12'>HTTP Headers</h3>
+<table><thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InstitutionId</td>
+<td>true</td>
+<td>string</td>
+<td>institutionId / insitution code yang di berikan</td>
+</tr>
+<tr>
+<td>AppsId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>appsId</code></td>
+</tr>
+<tr>
+<td>DeviceId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>869552045462447</code></td>
+</tr>
+<tr>
+<td>ChannelId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>H2H</code></td>
+</tr>
+<tr>
+<td>Geolocation</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>-6.231340755705505, 106.84526008386358</code></td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>1579666534</code></td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>false</td>
+<td>string</td>
+<td>ex. <code>60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</code></td>
+</tr>
+<tr>
+<td>Authorizatoin</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/detail"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"DeviceId: 869552045462447"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ChannelId: H2H"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Geolocation: -6.231340755705505, 106.84526008386358"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Timestamp: 1579666534"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="</span>
+</code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a2bb4a8d-d04e-4d87-be03-f80f972d9738"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Promo Hari Ini"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"promoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minTrx"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"earnStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"earnStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-14T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"earnEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"promoStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-14T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"promoEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"redeemStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"promoNominal"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-13T22:07:39.183317Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-13T22:07:39.183317Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updatedBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-12'>Response</h3>
+<table><thead>
+<tr>
+<th><strong>Response Code</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>00</code></td>
+<td>Success</td>
+<td>Customer berhasil di tambahkan pada merchant / Nomor Customer sudah terdaftar pada sistem dan di link pada merchant</td>
+<td></td>
+</tr>
+<tr>
+<td><code>03</code></td>
+<td>Failed</td>
+<td>Nomor Telepon Customer Belum Terdaftar</td>
+<td></td>
+</tr>
+<tr>
+<td><code>06</code></td>
+<td>Bad Request</td>
+<td>Signature tidak tepat</td>
+<td></td>
+</tr>
+<tr>
+<td><code>08</code></td>
+<td>Bad Request</td>
+<td>Terdapat kesalahan pada data yang di kirim</td>
+<td></td>
+</tr>
+<tr>
+<td><code>12</code></td>
+<td>Failed</td>
+<td>Token or Session Expired</td>
+<td></td>
+</tr>
+<tr>
+<td><code>22</code></td>
+<td>Bad Request</td>
+<td>Invalid promo start date or end date</td>
+<td></td>
+</tr>
+<tr>
+<td><code>99</code></td>
+<td>General Error</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='update-promo'>Update Promo</h2>
+<p><code>POST</code>: <code>/merchant/v1/promo/update</code>  </p>
+<h3 id='http-headers-13'>HTTP Headers</h3>
+<table><thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InstitutionId</td>
+<td>true</td>
+<td>string</td>
+<td>institutionId / insitution code yang di berikan</td>
+</tr>
+<tr>
+<td>AppsId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>appsId</code></td>
+</tr>
+<tr>
+<td>DeviceId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>869552045462447</code></td>
+</tr>
+<tr>
+<td>ChannelId</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>H2H</code></td>
+</tr>
+<tr>
+<td>Geolocation</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>-6.231340755705505, 106.84526008386358</code></td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>1579666534</code></td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</code></td>
+</tr>
+<tr>
+<td>Authorizatoin</td>
+<td>true</td>
+<td>string</td>
+<td>ex. <code>MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=</code></td>
+</tr>
+</tbody></table>
+<h3 id='body-parameter-7'>Body Parameter</h3>
+<table><thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Required</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Size</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>earnStartDate</td>
+<td>true</td>
+<td>string</td>
+<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
+<td></td>
+</tr>
+<tr>
+<td>earnEndDate</td>
+<td>true</td>
+<td>string</td>
+<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
+<td></td>
+</tr>
+<tr>
+<td>promoStartDate</td>
+<td>true</td>
+<td>string</td>
+<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
+<td></td>
+</tr>
+<tr>
+<td>promoEndDate</td>
+<td>true</td>
+<td>string</td>
+<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/edit"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"DeviceId: 869552045462447"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ChannelId: H2H"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Geolocation: -6.231340755705505, 106.84526008386358"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Timestamp: 1579666534"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="</span>
+</code></pre></div>
+<blockquote>
+<p>Request body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"earnStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"earnEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"promoStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"promoEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-13'>Response</h3>
+<table><thead>
+<tr>
+<th><strong>Response Code</strong></th>
+<th><strong>Meaning</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>00</code></td>
+<td>Success</td>
+<td>Customer berhasil di tambahkan pada merchant / Nomor Customer sudah terdaftar pada sistem dan di link pada merchant</td>
+<td></td>
+</tr>
+<tr>
+<td><code>03</code></td>
+<td>Failed</td>
+<td>Nomor Telepon Customer Belum Terdaftar</td>
+<td></td>
+</tr>
+<tr>
+<td><code>06</code></td>
+<td>Bad Request</td>
+<td>Signature tidak tepat</td>
+<td></td>
+</tr>
+<tr>
+<td><code>08</code></td>
+<td>Bad Request</td>
+<td>Terdapat kesalahan pada data yang di kirim</td>
+<td></td>
+</tr>
+<tr>
+<td><code>12</code></td>
+<td>Failed</td>
+<td>Token or Session Expired</td>
+<td></td>
+</tr>
+<tr>
+<td><code>22</code></td>
+<td>Bad Request</td>
+<td>Invalid promo start date or end date</td>
+<td></td>
+</tr>
+<tr>
+<td><code>99</code></td>
+<td>General Error</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='delete-promo'>Delete Promo</h2>
+<p><code>POST</code>: <code>/merchant/v1/promo/delete</code> </p>
+<h3 id='http-headers-14'>HTTP Headers</h3>
 <table><thead>
 <tr>
 <th><strong>Property</strong></th>
@@ -2434,419 +2876,18 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
+<td>id</td>
 <td>true</td>
 <td>string</td>
-<td>100</td>
-<td>nama promo</td>
-</tr>
-<tr>
-<td>minTrx</td>
-<td>true</td>
-<td>int</td>
 <td></td>
-<td></td>
-</tr>
-<tr>
-<td>earnStartDate</td>
-<td>true</td>
-<td>string</td>
-<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
-<td></td>
-</tr>
-<tr>
-<td>earnEndDate</td>
-<td>true</td>
-<td>string</td>
-<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
-<td></td>
-</tr>
-<tr>
-<td>earnStamp</td>
-<td>true</td>
-<td>numeric</td>
-<td>stamp yang akan di dapatkan customer jika transaksi &gt;= minTrx</td>
-<td></td>
-</tr>
-<tr>
-<td>promoStartDate</td>
-<td>true</td>
-<td>string</td>
-<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
-<td></td>
-</tr>
-<tr>
-<td>promoEndDate</td>
-<td>true</td>
-<td>string</td>
-<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
-<td></td>
-</tr>
-<tr>
-<td>promoType</td>
-<td>true</td>
-<td>string</td>
-<td>jenis promo, Ex <code>NT</code> (untuk saat ini, hanya ada jenis promo <code>nominal transaksi</code>)</td>
-<td></td>
-</tr>
-<tr>
-<td>promoNominal</td>
-<td>true</td>
-<td>numeric</td>
-<td>potongan harga yang di dapatkan customer ketika ingin melakukan redemption stamp mereka, ex.<code>4</code></td>
-<td></td>
-</tr>
-<tr>
-<td>redeemStamp</td>
-<td>true</td>
-<td>numeric</td>
-<td>stamp yang di butuhkan untuk mendapatkan <code>promoNominal</code></td>
-<td></td>
+<td>id promo yang di dapat response <code>Detail Promo</code></td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"DeviceId: 869552045462447"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"ChannelId: H2H"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Geolocation: -6.231340755705505, 106.84526008386358"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Timestamp: 1579666534"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="</span>
-</code></pre></div>
-<blockquote>
-<p>Request body:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Promo Hari Ini"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"minTrx"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"earnStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-10"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"earnEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"earnStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"promoStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-10"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"promoEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"promoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"redeemStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"promoNominal"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-12'>Response</h3>
-<table><thead>
-<tr>
-<th><strong>Response Code</strong></th>
-<th><strong>Meaning</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Definition</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>00</code></td>
-<td>Success</td>
-<td>Customer berhasil di tambahkan pada merchant / Nomor Customer sudah terdaftar pada sistem dan di link pada merchant</td>
-<td></td>
-</tr>
-<tr>
-<td><code>03</code></td>
-<td>Failed</td>
-<td>Nomor Telepon Customer Belum Terdaftar</td>
-<td></td>
-</tr>
-<tr>
-<td><code>06</code></td>
-<td>Bad Request</td>
-<td>Signature tidak tepat</td>
-<td></td>
-</tr>
-<tr>
-<td><code>08</code></td>
-<td>Bad Request</td>
-<td>Terdapat kesalahan pada data yang di kirim</td>
-<td></td>
-</tr>
-<tr>
-<td><code>12</code></td>
-<td>Failed</td>
-<td>Token or Session Expired</td>
-<td></td>
-</tr>
-<tr>
-<td><code>22</code></td>
-<td>Bad Request</td>
-<td>Invalid promo start date or end date</td>
-<td></td>
-</tr>
-<tr>
-<td><code>99</code></td>
-<td>General Error</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='detail-promo'>Detail Promo</h2><h3 id='http-headers-13'>HTTP Headers</h3>
-<table><thead>
-<tr>
-<th><strong>Property</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>InstitutionId</td>
-<td>true</td>
-<td>string</td>
-<td>institutionId / insitution code yang di berikan</td>
-</tr>
-<tr>
-<td>AppsId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>appsId</code></td>
-</tr>
-<tr>
-<td>DeviceId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>869552045462447</code></td>
-</tr>
-<tr>
-<td>ChannelId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>H2H</code></td>
-</tr>
-<tr>
-<td>Geolocation</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>-6.231340755705505, 106.84526008386358</code></td>
-</tr>
-<tr>
-<td>Timestamp</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>1579666534</code></td>
-</tr>
-<tr>
-<td>Signature</td>
-<td>false</td>
-<td>string</td>
-<td>ex. <code>60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</code></td>
-</tr>
-<tr>
-<td>Authorizatoin</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=</code></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"DeviceId: 869552045462447"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"ChannelId: H2H"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Geolocation: -6.231340755705505, 106.84526008386358"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Timestamp: 1579666534"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="</span>
-</code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a2bb4a8d-d04e-4d87-be03-f80f972d9738"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Promo Hari Ini"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"promoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"minTrx"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"earnStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"earnStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-14T00:00:00Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"earnEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30T00:00:00Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"promoStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-14T00:00:00Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"promoEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30T00:00:00Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"redeemStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"promoNominal"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-13T22:07:39.183317Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-13T22:07:39.183317Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updatedBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-13'>Response</h3>
-<table><thead>
-<tr>
-<th><strong>Response Code</strong></th>
-<th><strong>Meaning</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Definition</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>00</code></td>
-<td>Success</td>
-<td>Customer berhasil di tambahkan pada merchant / Nomor Customer sudah terdaftar pada sistem dan di link pada merchant</td>
-<td></td>
-</tr>
-<tr>
-<td><code>03</code></td>
-<td>Failed</td>
-<td>Nomor Telepon Customer Belum Terdaftar</td>
-<td></td>
-</tr>
-<tr>
-<td><code>06</code></td>
-<td>Bad Request</td>
-<td>Signature tidak tepat</td>
-<td></td>
-</tr>
-<tr>
-<td><code>08</code></td>
-<td>Bad Request</td>
-<td>Terdapat kesalahan pada data yang di kirim</td>
-<td></td>
-</tr>
-<tr>
-<td><code>12</code></td>
-<td>Failed</td>
-<td>Token or Session Expired</td>
-<td></td>
-</tr>
-<tr>
-<td><code>22</code></td>
-<td>Bad Request</td>
-<td>Invalid promo start date or end date</td>
-<td></td>
-</tr>
-<tr>
-<td><code>99</code></td>
-<td>General Error</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='update-promo'>Update Promo</h2><h3 id='http-headers-14'>HTTP Headers</h3>
-<table><thead>
-<tr>
-<th><strong>Property</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>InstitutionId</td>
-<td>true</td>
-<td>string</td>
-<td>institutionId / insitution code yang di berikan</td>
-</tr>
-<tr>
-<td>AppsId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>appsId</code></td>
-</tr>
-<tr>
-<td>DeviceId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>869552045462447</code></td>
-</tr>
-<tr>
-<td>ChannelId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>H2H</code></td>
-</tr>
-<tr>
-<td>Geolocation</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>-6.231340755705505, 106.84526008386358</code></td>
-</tr>
-<tr>
-<td>Timestamp</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>1579666534</code></td>
-</tr>
-<tr>
-<td>Signature</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</code></td>
-</tr>
-<tr>
-<td>Authorizatoin</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=</code></td>
-</tr>
-</tbody></table>
-<h3 id='body-parameter-9'>Body Parameter</h3>
-<table><thead>
-<tr>
-<th><strong>Property</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Size</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>earnStartDate</td>
-<td>true</td>
-<td>string</td>
-<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
-<td></td>
-</tr>
-<tr>
-<td>earnEndDate</td>
-<td>true</td>
-<td>string</td>
-<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
-<td></td>
-</tr>
-<tr>
-<td>promoStartDate</td>
-<td>true</td>
-<td>string</td>
-<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
-<td></td>
-</tr>
-<tr>
-<td>promoEndDate</td>
-<td>true</td>
-<td>string</td>
-<td>tanggal earning, format <code>YYYY-MM-DD</code></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://apidev.ottopoint.id/ottostamp/merchant/v1/promo/delete"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
@@ -2876,167 +2917,6 @@
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response-14'>Response</h3>
-<table><thead>
-<tr>
-<th><strong>Response Code</strong></th>
-<th><strong>Meaning</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Definition</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>00</code></td>
-<td>Success</td>
-<td>Customer berhasil di tambahkan pada merchant / Nomor Customer sudah terdaftar pada sistem dan di link pada merchant</td>
-<td></td>
-</tr>
-<tr>
-<td><code>03</code></td>
-<td>Failed</td>
-<td>Nomor Telepon Customer Belum Terdaftar</td>
-<td></td>
-</tr>
-<tr>
-<td><code>06</code></td>
-<td>Bad Request</td>
-<td>Signature tidak tepat</td>
-<td></td>
-</tr>
-<tr>
-<td><code>08</code></td>
-<td>Bad Request</td>
-<td>Terdapat kesalahan pada data yang di kirim</td>
-<td></td>
-</tr>
-<tr>
-<td><code>12</code></td>
-<td>Failed</td>
-<td>Token or Session Expired</td>
-<td></td>
-</tr>
-<tr>
-<td><code>22</code></td>
-<td>Bad Request</td>
-<td>Invalid promo start date or end date</td>
-<td></td>
-</tr>
-<tr>
-<td><code>99</code></td>
-<td>General Error</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='delete-promo'>Delete Promo</h2><h3 id='http-headers-15'>HTTP Headers</h3>
-<table><thead>
-<tr>
-<th><strong>Property</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>InstitutionId</td>
-<td>true</td>
-<td>string</td>
-<td>institutionId / insitution code yang di berikan</td>
-</tr>
-<tr>
-<td>AppsId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>appsId</code></td>
-</tr>
-<tr>
-<td>DeviceId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>869552045462447</code></td>
-</tr>
-<tr>
-<td>ChannelId</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>H2H</code></td>
-</tr>
-<tr>
-<td>Geolocation</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>-6.231340755705505, 106.84526008386358</code></td>
-</tr>
-<tr>
-<td>Timestamp</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>1579666534</code></td>
-</tr>
-<tr>
-<td>Signature</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91</code></td>
-</tr>
-<tr>
-<td>Authorizatoin</td>
-<td>true</td>
-<td>string</td>
-<td>ex. <code>MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY=</code></td>
-</tr>
-</tbody></table>
-<h3 id='body-parameter-10'>Body Parameter</h3>
-<table><thead>
-<tr>
-<th><strong>Property</strong></th>
-<th><strong>Required</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Size</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>true</td>
-<td>string</td>
-<td></td>
-<td>id promo yang di dapat response <code>Detail Promo</code></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"InstitutionId: OS001"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"AppsId: appsId"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"DeviceId: 869552045462447"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"ChannelId: H2H"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Geolocation: -6.231340755705505, 106.84526008386358"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Timestamp: 1579666534"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Signature: 60874cef2259f961b84faced046bd968f5cdd583ed1fbe41cdb7306d1386a473ac98ef167f0f19e7e7b57937fb1a54e3b161873628ef483bb9d75d50f625ae91"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: MDgxMzQ2OTk4OXVKRUR6Z2RtOVpsUXEyNDY="</span>
-</code></pre></div>
-<blockquote>
-<p>Request body:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"earnStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-10"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"earnEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"promoStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-10"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"promoEndDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-30"</span><span class="p">,</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"responseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"responseDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-15'>Response</h3>
 <table><thead>
 <tr>
 <th><strong>Response Code</strong></th>
